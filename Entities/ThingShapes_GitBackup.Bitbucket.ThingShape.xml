@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Entities build="b349" majorVersion="8" minorVersion="3" modelPersistenceProviderPackage="H2PersistenceProviderPackage" revision="0" schemaVersion="1030" universal=""><ThingShapes><ThingShape className="" description="This ThingShape offers Bitbucket specific functionality, like checking if user and password are correct, getting the repo list and more." documentationContent="" homeMashup="" lastModifiedDate="2018-12-29T10:23:54.579+02:00" name="GitBackup.Bitbucket.ThingShape" projectName="GitBackup" tags=""><PropertyDefinitions><PropertyDefinition aspect.dataChangeType="VALUE" aspect.defaultValue="https://api.bitbucket.org/2.0" aspect.isPersistent="true" baseType="STRING" category="" description="" isLocalOnly="false" name="BitBucketAPIRepositoryURL" ordinal="2"/></PropertyDefinitions><ServiceDefinitions><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="CheckIfBitbucketCredentialsAreCorrect"><ResultType baseType="BOOLEAN" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="Password" ordinal="2"/><FieldDefinition baseType="STRING" description="" name="Username" ordinal="1"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition aspect.isAsync="false" category="" description="" isAllowOverride="true" isLocalOnly="false" isOpen="false" isPrivate="false" name="CreateCentralRepository"><ResultType baseType="BOOLEAN" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="Project" ordinal="0"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="DoesCentralRepositoryExist"><ResultType baseType="BOOLEAN" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="Project" ordinal="0"/></ParameterDefinitions></ServiceDefinition><ServiceDefinition category="" description="" isAllowOverride="false" isLocalOnly="false" isOpen="false" isPrivate="false" name="QueryRepositoryByName"><ResultType aspect.dataShape="QueryRepository.DataShape" baseType="INFOTABLE" description="" name="result" ordinal="0"/><ParameterDefinitions><FieldDefinition baseType="STRING" description="" name="Password" ordinal="2"/><FieldDefinition baseType="STRING" description="" name="RepoName" ordinal="3"/><FieldDefinition baseType="STRING" description="" name="Username" ordinal="1"/></ParameterDefinitions></ServiceDefinition></ServiceDefinitions><EventDefinitions/><ServiceMappings/><ServiceImplementations><ServiceImplementation description="" handlerName="Script" name="CheckIfBitbucketCredentialsAreCorrect"><ConfigurationTables><ConfigurationTable description="" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[var params = {
+	headers: {"Accept":"application/json"} /* JSON */,
+	ignoreSSLErrors: true /* BOOLEAN */,
+	url: "https://api.bitbucket.org/2.0/user" /* STRING */,
+	password: Password /* STRING */,
+	username: Username /* STRING */
+};
+
+// result: JSON
+var iftbl_UserInfo = Resources["ContentLoaderFunctions"].GetJSON(params);
+if (Object.keys(iftbl_UserInfo).length>1) result = true; else result = false;
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="CreateCentralRepository"><ConfigurationTables><ConfigurationTable description="Script" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[// alternative w/ bitbucket REST API v2
+// curl -X POST -H "Content-Type: application/json" -H "Accept: application/json" -d '{"scm": "git","is_private": true}' "https://api.bitbucket.org/2.0/repositories/mvonhasselbach/test12345"
+var result=false;
+var params = {
+	ignoreSSLErrors: true /* BOOLEAN */,
+	url: me.CentralRepositoryAPIUri+"/"+Project.toLowerCase() /* STRING */,
+	password: me.CentralRepositoryPassword /* STRING */,
+	username: me.CentralRepositoryUser /* STRING */,
+    content: {"scm": "git", "is_private": true, "name": Project} /* JSON */
+};
+try {
+    // result: JSON
+    var resp = Resources["ContentLoaderFunctions"].PostJSON(params);
+	if(resp && resp.scm) result=true;
+} catch(err) {
+
+}]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="DoesCentralRepositoryExist"><ConfigurationTables><ConfigurationTable description="Script" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[var result=false;
+var params = {
+	ignoreSSLErrors: true /* BOOLEAN */,
+	url: me.CentralRepositoryAPIUri+'/'+Project.toLowerCase() /* STRING */,
+	password: me.CentralRepositoryPassword /* STRING */,
+	username: me.CentralRepositoryUser /* STRING */
+};
+try {
+    // result: JSON
+    var resp = Resources["ContentLoaderFunctions"].GetJSON(params);
+	if(resp && resp.scm) result=true;
+} catch(err) {
+
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation><ServiceImplementation description="" handlerName="Script" name="QueryRepositoryByName"><ConfigurationTables><ConfigurationTable description="Script" isMultiRow="false" name="Script" ordinal="0"><DataShape><FieldDefinitions><FieldDefinition baseType="STRING" description="code" name="code" ordinal="0"/></FieldDefinitions></DataShape><Rows><Row><code><![CDATA[// CreateInfoTableFromDataShape(infoTableName:STRING("InfoTable"), dataShapeName:STRING):INFOTABLE(RemoteRepositoryDataShape)
+var result = Resources["InfoTableFunctions"].CreateInfoTableFromDataShape({
+	infoTableName : "InfoTable",
+	dataShapeName : "RemoteRepositoryDataShape"
+});
+var str_Query="";
+if (RepoName!==undefined&&RepoName!=="") str_Query="&"+"q=name"+encodeURIComponent("~\""+RepoName+"\"");
+logger.warn(RepoName);
+var params = {
+	ignoreSSLErrors: true /* BOOLEAN */,
+	url: me.BitBucketAPIRepositoryURL+"/repositories?role=contributor"+str_Query /* me.CentralRepositoryAPIUri */,
+	password: Password,
+	username:  Username/* me.CentralRepositoryUser */
+};
+var arr_repos = Resources["ContentLoaderFunctions"].GetJSON(params).values;
+
+try {
+        // RemoteRepositoryDataShape entry object
+        for (var x = 0; x < arr_repos.length; x++) {
+            var row = arr_repos[x];
+            var newEntry = new Object();
+            newEntry.Type = row.scm; // STRING
+            newEntry.Owner = row.owner.username; // STRING
+            newEntry.FullName = row.full_name; // STRING
+            newEntry.Name = row.name; // STRING
+            for(var xx=0; xx<row.links.clone.length; xx++){
+                if(row.links.clone[xx].name=="https"){
+                    newEntry.CloneURL = row.links.clone[xx].href; // STRING
+                    break;
+                }
+            }
+            
+            result.AddRow(newEntry);
+        		
+       
+    }
+} catch(err) {
+logger.warn(err);
+}
+]]></code></Row></Rows></ConfigurationTable></ConfigurationTables></ServiceImplementation></ServiceImplementations><Subscriptions/><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTables/><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, description : updated&#10;" timestamp="2018-08-24T13:02:41.771+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : CentralRepositoryPassword : removed, CentralRepositoryUser : removed, CentralRepositoryAPIUri : removed, CentralRepository : removed&#10;" timestamp="2018-08-24T13:04:31.854+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : input parameter Username added, inputs updated, input parameter Password added, inputs updated, input parameter BitbucketURL added, inputs updated&#10;properties : BitBucketAPIRepositoryURL : added, BitBucketAPIRepositoryURL : updated&#10;" timestamp="2018-08-24T13:20:27.858+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-24T13:22:20.658+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-24T13:40:49.866+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : input parameter BitbucketURL deleted, inputs updated&#10;" timestamp="2018-08-24T13:41:37.848+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:04:24.436+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:09:16.714+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:40:29.966+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:41:12.085+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:42:46.373+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:44:09.029+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;" timestamp="2018-08-27T17:45:09.201+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : GetAllCentralRepositories : service updated&#10;QueryRepositoryByName : service added, input parameter RepoName added, inputs updated&#10;" timestamp="2018-08-27T17:55:57.646+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-27T17:56:42.883+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-27T17:58:30.679+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-27T17:59:28.722+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;GetAllCentralRepositories : service deleted&#10;" timestamp="2018-08-27T18:00:46.406+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : output updated&#10;" timestamp="2018-08-27T18:10:00.767+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-28T16:03:52.479+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-29T15:32:55.620+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : input parameter RepoName updated, inputs updated&#10;" timestamp="2018-08-29T15:42:57.153+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-29T15:45:30.980+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="services : QueryRepositoryByName : service updated&#10;" timestamp="2018-08-30T11:57:45.023+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="properties : BitBucketAPIRepositoryURL : updated&#10;" timestamp="2018-12-29T10:23:54.579+02:00" user="Administrator"/></ConfigurationChanges><PropertyBindings/><RemotePropertyBindings/><RemoteServiceBindings/><RemoteEventBindings/><AlertConfigurations><AlertDefinitions name="BitBucketAPIRepositoryURL"/></AlertConfigurations><InstanceRunTimePermissions/></ThingShape></ThingShapes></Entities>

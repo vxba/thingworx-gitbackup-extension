@@ -1,0 +1,1707 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Entities build="b349" majorVersion="8" minorVersion="3" modelPersistenceProviderPackage="H2PersistenceProviderPackage" revision="0" schemaVersion="1030" universal=""><Mashups><Mashup aspect.isResponsive="true" aspect.isEditableExtensionObject="true" aspect.mashupType="mashup" columns="0.0" description="" documentationContent="" homeMashup="" lastModifiedDate="2018-12-27T17:43:52.452+02:00" name="GitBackup.Export.Mashup" projectName="GitBackup" rows="0.0" tags=""><Owner name="Administrator" type="User"/><avatar/><DesignTimePermissions><Create/><Read/><Update/><Delete/><Metadata/></DesignTimePermissions><RunTimePermissions/><VisibilityPermissions><Visibility/></VisibilityPermissions><ConfigurationTables/><ParameterDefinitions><FieldDefinition aspect.ordinal="0" baseType="STRING" description="" name="GitThingName" ordinal="0"/></ParameterDefinitions><Things><Thing>GIT.Utility.Thing</Thing></Things><ThingShapes><ThingShape>Git.Utility.ThingShape</ThingShape></ThingShapes><ThingTemplates/><mashupContent><![CDATA[{
+  "ConfigurationTables" : { },
+  "CustomMashupCss" : "",
+  "Data" : {
+    "DynamicThingShapes_Git.Utility.ThingShape" : {
+      "DataName" : "DynamicThingShapes_Git.Utility.ThingShape",
+      "EntityName" : "Git.Utility.ThingShape",
+      "EntityType" : "DynamicThingShapes",
+      "Id" : "c2cf3589-527c-4d26-9a40-118b416504a4",
+      "Services" : [ {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "155db89c-ce99-4c00-959e-7b650366722b",
+        "Name" : "GetConfiguration",
+        "Parameters" : { },
+        "RefreshInterval" : 0,
+        "Target" : "GetConfiguration"
+      }, {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "6edfe925-0672-4734-9631-8d51c5523766",
+        "Name" : "ExportProjectData",
+        "Parameters" : { },
+        "Properties" : {
+          "CustomSuccessMessage" : "Data has been exported successfully",
+          "ShowSuccessMessage" : true
+        },
+        "RefreshInterval" : 0,
+        "Target" : "ExportProjectData"
+      } ]
+    },
+    "Resources_ExtensionsExport" : {
+      "DataName" : "Resources_ExtensionsExport",
+      "EntityName" : "ExtensionsExport",
+      "EntityType" : "Resources",
+      "Id" : "644dc192-d8e5-49c4-bb9c-24581aa06b0f",
+      "Services" : [ {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "2d29cc59-c80c-4d0d-97d5-4bf790e7262c",
+        "Name" : "ExportExtensionsToRepository",
+        "Parameters" : {
+          "overwrite" : true
+        },
+        "Properties" : {
+          "CustomSuccessMessage" : "Extensions have been exported successfully",
+          "ShowSuccessMessage" : true
+        },
+        "RefreshInterval" : 0,
+        "Target" : "ExportExtensionsToRepository"
+      } ]
+    },
+    "Resources_SourceControlFunctions" : {
+      "DataName" : "Resources_SourceControlFunctions",
+      "EntityName" : "SourceControlFunctions",
+      "EntityType" : "Resources",
+      "Id" : "396e16a4-645a-43fc-a0f7-6edc979c389a",
+      "Services" : [ {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "4f12f306-31b6-4df8-8a0c-ef7c74ee664c",
+        "Name" : "ExportSourceControlledEntities",
+        "Parameters" : { },
+        "Properties" : {
+          "CustomSuccessMessage" : "Entities have been exported successfully",
+          "ShowSuccessMessage" : true
+        },
+        "RefreshInterval" : 0,
+        "Target" : "ExportSourceControlledEntities"
+      } ]
+    },
+    "Session" : {
+      "DataName" : "Session",
+      "EntityName" : "",
+      "EntityType" : "Session",
+      "Id" : "session",
+      "Services" : [ {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "SessionInterface",
+        "Name" : "GetGlobalSessionValues",
+        "Parameters" : { },
+        "RefreshInterval" : 0,
+        "Target" : "GetGlobalSessionValues"
+      } ]
+    },
+    "Things_GIT.Utility.Thing" : {
+      "DataName" : "Things_GIT.Utility.Thing",
+      "EntityName" : "GIT.Utility.Thing",
+      "EntityType" : "Things",
+      "Id" : "f2a66c79-5f01-4afb-8b16-7f590511d3fa",
+      "Services" : [ {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "f6e006f5-0e98-43ff-b82e-6caa06d3ee31",
+        "Name" : "Pause",
+        "Parameters" : {
+          "delay" : 2
+        },
+        "RefreshInterval" : 0,
+        "Target" : "Pause"
+      }, {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "b3ae55db-9642-4bfb-aa49-b4f6273864d8",
+        "Name" : "Pause1",
+        "Parameters" : {
+          "delay" : 2
+        },
+        "RefreshInterval" : 0,
+        "Target" : "Pause"
+      }, {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "38598c35-2ac3-45f7-984f-6311614ddd6e",
+        "Name" : "Pause2",
+        "Parameters" : {
+          "delay" : 2
+        },
+        "RefreshInterval" : 0,
+        "Target" : "Pause"
+      } ]
+    },
+    "UserExtensions" : {
+      "DataName" : "UserExtensions",
+      "EntityName" : "",
+      "EntityType" : "UserExtensions",
+      "Id" : "UserExtensions",
+      "Services" : [ {
+        "APIMethod" : "post",
+        "Characteristic" : "Services",
+        "Id" : "UserExtensionInterface",
+        "Name" : "GetCurrentUserExtensionProperties",
+        "Parameters" : { },
+        "RefreshInterval" : 0,
+        "Target" : "GetCurrentUserExtensionProperties"
+      } ]
+    }
+  },
+  "DataBindings" : [ {
+    "Id" : "286280bd-6270-47e1-a237-aaf09f1fba2d",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Text",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-14",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "label-6",
+    "TargetSection" : ""
+  }, {
+    "Id" : "36216854-c18c-4094-b9b9-93afe79f90e1",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Entity",
+      "SourcePropertyBaseType" : "PROJECTNAME",
+      "TargetProperty" : "projectName",
+      "TargetPropertyBaseType" : "PROJECTNAME",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "entitypicker-16",
+    "SourceSection" : "",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportSourceControlledEntities",
+    "TargetSection" : "Resources_SourceControlFunctions"
+  }, {
+    "Id" : "4198e274-8eae-471c-b205-a81872e2beee",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "State",
+      "SourcePropertyBaseType" : "BOOLEAN",
+      "TargetProperty" : "includeDependents",
+      "TargetPropertyBaseType" : "BOOLEAN",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "checkbox-15",
+    "SourceSection" : "",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportSourceControlledEntities",
+    "TargetSection" : "Resources_SourceControlFunctions"
+  }, {
+    "Id" : "baf3069c-6c1f-4725-8010-f82918b3aad7",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "FileRepoPath",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Field",
+      "TargetProperty" : "RepoPathName",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "Data",
+    "SourceDetails" : "AllData",
+    "SourceId" : "GetConfiguration",
+    "SourceSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "TargetArea" : "UI",
+    "TargetId" : "expression-14",
+    "TargetSection" : ""
+  }, {
+    "Id" : "1d43427f-ce11-4c00-9854-ec7aa364d0eb",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "CustomClass",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "eventsrouter-34",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "button-31",
+    "TargetSection" : ""
+  }, {
+    "Id" : "4a093116-43b3-41a9-862f-af733791ff85",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input1",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-33",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-34",
+    "TargetSection" : ""
+  }, {
+    "Id" : "cc5806c8-fe3c-4279-8ef2-997ba736ad32",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input3",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-36",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-34",
+    "TargetSection" : ""
+  }, {
+    "Id" : "ec8c91e7-465f-4a8f-beee-17cdddb3129e",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input2",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-35",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-34",
+    "TargetSection" : ""
+  }, {
+    "Id" : "ba5bc7bd-2835-49f9-97dd-c66168b3d57c",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "CustomClass",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "eventsrouter-40",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "button-20",
+    "TargetSection" : ""
+  }, {
+    "Id" : "9399757f-f3f4-4d15-a542-cb733a7b702e",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input1",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-38",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-40",
+    "TargetSection" : ""
+  }, {
+    "Id" : "4d7d39f4-689a-4d64-aa7b-6a899efa9d86",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input2",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-39",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-40",
+    "TargetSection" : ""
+  }, {
+    "Id" : "9de88e22-e0a2-4da4-ad36-56f074341aac",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input3",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-41",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-40",
+    "TargetSection" : ""
+  }, {
+    "Id" : "f9e709c3-cf4c-451e-b261-475c039680c1",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Entity",
+      "SourcePropertyBaseType" : "PROJECTNAME",
+      "TargetProperty" : "ProjectName",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "entitypicker-24",
+    "SourceSection" : "",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportProjectData",
+    "TargetSection" : "DynamicThingShapes_Git.Utility.ThingShape"
+  }, {
+    "Id" : "6073fc17-d0e6-421d-b391-918d4789151d",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input1",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-42",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-44",
+    "TargetSection" : ""
+  }, {
+    "Id" : "6e7afd34-514d-491c-bdac-c74227ccea1f",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input2",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-43",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-44",
+    "TargetSection" : ""
+  }, {
+    "Id" : "4948b741-febd-439a-bc05-cc55edca8c85",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "Input3",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-45",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "eventsrouter-44",
+    "TargetSection" : ""
+  }, {
+    "Id" : "11eaaeac-b5b8-4ac3-9c59-38ce957839b4",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Property",
+      "TargetProperty" : "CustomClass",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "eventsrouter-44",
+    "SourceSection" : "",
+    "TargetArea" : "UI",
+    "TargetId" : "button-26",
+    "TargetSection" : ""
+  }, {
+    "Id" : "8837ced9-fd93-4ff2-9403-50284994d046",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "FileRepository",
+      "SourcePropertyBaseType" : "STRING",
+      "TargetProperty" : "repositoryName",
+      "TargetPropertyBaseType" : "THINGNAME",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "Data",
+    "SourceDetails" : "AllData",
+    "SourceId" : "GetConfiguration",
+    "SourceSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportExtensionsToRepository",
+    "TargetSection" : "Resources_ExtensionsExport"
+  }, {
+    "Id" : "0a7502d7-2d4f-41c2-94c8-25e963137f11",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "FileRepoPath",
+      "SourcePropertyBaseType" : "STRING",
+      "SourcePropertyType" : "Field",
+      "TargetProperty" : "repositoryPath",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "property"
+    } ],
+    "SourceArea" : "Data",
+    "SourceDetails" : "AllData",
+    "SourceId" : "GetConfiguration",
+    "SourceSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "TargetArea" : "UI",
+    "TargetId" : "expression-46",
+    "TargetSection" : ""
+  }, {
+    "Id" : "7bb80f7e-e840-45bd-8c2a-09b8a812d72e",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "Output",
+      "SourcePropertyBaseType" : "STRING",
+      "TargetProperty" : "repositoryPath",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "UI",
+    "SourceId" : "expression-46",
+    "SourceSection" : "",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportExtensionsToRepository",
+    "TargetSection" : "Resources_ExtensionsExport"
+  }, {
+    "Id" : "f5648203-d86c-43cd-8998-4a98d4c219a8",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "FileRepository",
+      "SourcePropertyBaseType" : "STRING",
+      "TargetProperty" : "repositoryName",
+      "TargetPropertyBaseType" : "THINGNAME",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "Data",
+    "SourceDetails" : "AllData",
+    "SourceId" : "GetConfiguration",
+    "SourceSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportSourceControlledEntities",
+    "TargetSection" : "Resources_SourceControlFunctions"
+  }, {
+    "Id" : "5f875491-f1fa-4ed0-b636-6ef24f9a4b7e",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "FileRepoPath",
+      "SourcePropertyBaseType" : "STRING",
+      "TargetProperty" : "path",
+      "TargetPropertyBaseType" : "STRING",
+      "TargetPropertyType" : "Parameter"
+    } ],
+    "SourceArea" : "Data",
+    "SourceDetails" : "AllData",
+    "SourceId" : "GetConfiguration",
+    "SourceSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "TargetArea" : "Data",
+    "TargetId" : "ExportSourceControlledEntities",
+    "TargetSection" : "Resources_SourceControlFunctions"
+  }, {
+    "Id" : "2774ef2a-5b3f-41ed-bb10-9fb56813bc75",
+    "PropertyMaps" : [ {
+      "SourceProperty" : "GitThingName",
+      "SourcePropertyBaseType" : "STRING",
+      "TargetProperty" : "value",
+      "TargetPropertyBaseType" : "THINGNAME",
+      "TargetPropertyType" : "Entity"
+    } ],
+    "SourceArea" : "Mashup",
+    "SourceId" : "mashup-root",
+    "SourceSection" : "",
+    "TargetArea" : "Data",
+    "TargetId" : "EntityName",
+    "TargetSection" : "DynamicThingShapes_Git.Utility.ThingShape"
+  } ],
+  "DesignTimePermissions" : {
+    "Create" : [ ],
+    "Delete" : [ ],
+    "Metadata" : [ ],
+    "Read" : [ ],
+    "Update" : [ ]
+  },
+  "Events" : [ {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "EventHandlerService" : "GetConfiguration",
+    "EventTriggerArea" : "Mashup",
+    "EventTriggerEvent" : "Loaded",
+    "EventTriggerId" : "mashup-root",
+    "EventTriggerSection" : "",
+    "Id" : "edffa75f-eda3-400e-accd-0cf1522f675a"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-21",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Mashup",
+    "EventTriggerEvent" : "Loaded",
+    "EventTriggerId" : "mashup-root",
+    "EventTriggerSection" : "",
+    "Id" : "2d09bb78-12cb-4946-8086-480802f6097b"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-27",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Mashup",
+    "EventTriggerEvent" : "Loaded",
+    "EventTriggerId" : "mashup-root",
+    "EventTriggerSection" : "",
+    "Id" : "0a6b80e9-4cb1-4e46-a313-a39905fefe6e"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-33",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "UI",
+    "EventTriggerEvent" : "Clicked",
+    "EventTriggerId" : "button-31",
+    "EventTriggerSection" : "",
+    "Id" : "ce138999-6c57-4a79-a206-301f29f2d78b"
+  }, {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "Resources_ExtensionsExport",
+    "EventHandlerService" : "ExportExtensionsToRepository",
+    "EventTriggerArea" : "UI",
+    "EventTriggerEvent" : "Clicked",
+    "EventTriggerId" : "button-31",
+    "EventTriggerSection" : "",
+    "Id" : "11a494db-2d6f-47da-87dd-d2d0bb9c6f8d"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-35",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "ExportExtensionsToRepository",
+    "EventTriggerSection" : "Resources_ExtensionsExport",
+    "Id" : "429a86e0-f468-4710-8df7-ad2730e472d1"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-36",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Mashup",
+    "EventTriggerEvent" : "Loaded",
+    "EventTriggerId" : "mashup-root",
+    "EventTriggerSection" : "",
+    "Id" : "91cd59b2-8bc8-4d8f-8ecb-dea9e6981021"
+  }, {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "Things_GIT.Utility.Thing",
+    "EventHandlerService" : "Pause",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "ExportExtensionsToRepository",
+    "EventTriggerSection" : "Resources_ExtensionsExport",
+    "Id" : "dc96761b-4014-48a5-8ba4-831b6fce7ea6"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-36",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "Pause",
+    "EventTriggerSection" : "Things_GIT.Utility.Thing",
+    "Id" : "2ac0ef45-e8ce-4646-a770-464de6435366"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-39",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "UI",
+    "EventTriggerEvent" : "Clicked",
+    "EventTriggerId" : "button-20",
+    "EventTriggerSection" : "",
+    "Id" : "080d4c05-42b5-4146-8775-a5c8ff8a6093"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-41",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "ExportSourceControlledEntities",
+    "EventTriggerSection" : "Resources_SourceControlFunctions",
+    "Id" : "09dffede-3d72-494d-a936-c6293668fea0"
+  }, {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "Things_GIT.Utility.Thing",
+    "EventHandlerService" : "Pause1",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "ExportSourceControlledEntities",
+    "EventTriggerSection" : "Resources_SourceControlFunctions",
+    "Id" : "867385b7-5479-4095-9554-b575a831c755"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-38",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Mashup",
+    "EventTriggerEvent" : "Loaded",
+    "EventTriggerId" : "mashup-root",
+    "EventTriggerSection" : "",
+    "Id" : "0434f0f0-1a90-4420-abf0-dfd8ed28a5ab"
+  }, {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "Resources_SourceControlFunctions",
+    "EventHandlerService" : "ExportSourceControlledEntities",
+    "EventTriggerArea" : "UI",
+    "EventTriggerEvent" : "Clicked",
+    "EventTriggerId" : "button-20",
+    "EventTriggerSection" : "",
+    "Id" : "215206d7-5d5b-4cd0-bd0f-05fa58939e2d"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-38",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "Pause1",
+    "EventTriggerSection" : "Things_GIT.Utility.Thing",
+    "Id" : "c70d4093-bdd1-40df-b595-083e3ea4ac9e"
+  }, {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "EventHandlerService" : "ExportProjectData",
+    "EventTriggerArea" : "UI",
+    "EventTriggerEvent" : "Clicked",
+    "EventTriggerId" : "button-26",
+    "EventTriggerSection" : "",
+    "Id" : "772eb001-2669-4cb5-aec6-fa10d8303978"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-43",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "UI",
+    "EventTriggerEvent" : "Clicked",
+    "EventTriggerId" : "button-26",
+    "EventTriggerSection" : "",
+    "Id" : "1beb3753-1320-4c77-baf7-ef158c7516dc"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-45",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "ExportProjectData",
+    "EventTriggerSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "Id" : "1417978e-ff46-439b-9ba2-9d2a2b781357"
+  }, {
+    "EventHandlerArea" : "Data",
+    "EventHandlerId" : "Things_GIT.Utility.Thing",
+    "EventHandlerService" : "Pause2",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "ExportProjectData",
+    "EventTriggerSection" : "DynamicThingShapes_Git.Utility.ThingShape",
+    "Id" : "30241f4c-8e48-43ef-84f6-b1d3e8897630"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-42",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Data",
+    "EventTriggerEvent" : "ServiceInvokeCompleted",
+    "EventTriggerId" : "Pause2",
+    "EventTriggerSection" : "Things_GIT.Utility.Thing",
+    "Id" : "8ba2525f-af31-4427-8f27-f128529be724"
+  }, {
+    "EventHandlerArea" : "UI",
+    "EventHandlerId" : "expression-42",
+    "EventHandlerService" : "Evaluate",
+    "EventTriggerArea" : "Mashup",
+    "EventTriggerEvent" : "Loaded",
+    "EventTriggerId" : "mashup-root",
+    "EventTriggerSection" : "",
+    "Id" : "4e402333-9551-44db-bcd4-df58fdb3b940"
+  } ],
+  "RunTimePermissions" : {
+    "permissions" : [ ]
+  },
+  "UI" : {
+    "Properties" : {
+      "AddToDashboardButtonStyle" : "DefaultAddToDashboardButtonStyle",
+      "Area" : "Mashup",
+      "BGImageRepeat" : "no-repeat",
+      "BGImageSize" : "auto",
+      "Columns" : 0,
+      "ConfigureGadgetButtonStyle" : "DefaultConfigureGadgetButtonStyle",
+      "DisplayName" : "Mashup",
+      "EnableParameterEditing" : false,
+      "Height" : 618,
+      "Id" : "mashup-root",
+      "IgnoreWarningsInViewMashup" : false,
+      "IsPrintLayout" : false,
+      "Left" : 0,
+      "MashupToEditGadget" : "DefaultMashupToEditGadget",
+      "MinHeight" : 0,
+      "MinWidth" : 0,
+      "ResponsiveLayout" : true,
+      "Rows" : 0,
+      "ShowDataLoading" : true,
+      "Style" : "DefaultMashupStyle",
+      "Title" : "",
+      "TitleBar" : false,
+      "TitleBarStyle" : "DefaultTitleBarStyle",
+      "TitleBarText" : "Gadget Title Here",
+      "Top" : 0,
+      "Type" : "mashup",
+      "Visible" : true,
+      "Width" : 1024,
+      "Z-index" : 10,
+      "__TypeDisplayName" : "Mashup",
+      "_currentParameterDefs" : [ {
+        "BaseType" : "STRING",
+        "Description" : "",
+        "ParameterName" : "GitThingName"
+      } ],
+      "id_index" : 47,
+      "supportsAutoResize" : true
+    },
+    "Widgets" : [ {
+      "Properties" : {
+        "Area" : "UI",
+        "Columns" : 0,
+        "DisplayName" : "layout-1",
+        "Footer" : false,
+        "FooterHeight" : 0,
+        "Header" : true,
+        "HeaderHeight" : 50,
+        "Id" : "layout-1",
+        "IncludeSpacingInFixedAreas" : false,
+        "IsPrintLayout" : false,
+        "Left" : 410,
+        "LeftSidebar" : false,
+        "LeftSidebarWidth" : 0,
+        "Orientation" : "vertical",
+        "PctColumn1" : 50,
+        "PctColumn2" : 50,
+        "PctColumn3" : 1,
+        "PctColumn4" : 1,
+        "PctColumn5" : 1,
+        "PctColumn6" : 1,
+        "PctColumn7" : 1,
+        "PctColumn8" : 1,
+        "PctRow1" : 33.333333333333336,
+        "PctRow2" : 33.333333333333336,
+        "PctRow3" : 33.333333333333336,
+        "PctRow4" : 33.333333333333336,
+        "PctRow5" : 0,
+        "PctRow6" : 0,
+        "PctRow7" : 0,
+        "PctRow8" : 0,
+        "PrintMarginLeftRight" : 0.5,
+        "PrintMarginTopBottom" : 0.5,
+        "PrintWidth" : 650,
+        "ResponsiveLayout" : true,
+        "RightSidebar" : false,
+        "RightSidebarWidth" : 0,
+        "Rows" : 3,
+        "ShowDataLoading" : true,
+        "Spacing" : 0,
+        "Top" : 140,
+        "Type" : "layout",
+        "Visible" : true,
+        "Z-index" : 10,
+        "__TypeDisplayName" : "Layout"
+      },
+      "Widgets" : [ {
+        "Properties" : {
+          "AnimateExpandCollapse" : true,
+          "Area" : "UI",
+          "BGImageRepeat" : "no-repeat",
+          "BGImageSize" : "auto",
+          "DisplayName" : "Header",
+          "ExpandCollapseTabLocation" : "outside",
+          "Expanded" : true,
+          "Id" : "container-2",
+          "MinHeight" : 0,
+          "MinWidth" : 0,
+          "Overlay" : false,
+          "OverlayIsTransparent" : false,
+          "ResponsiveLayout" : true,
+          "ShowDataLoading" : true,
+          "ShowExpandCollapseTab" : false,
+          "Style" : "DefaultContainerStyle",
+          "TabCollapseStyle" : "DefaultTabCollapseStyle",
+          "TabExpandStyle" : "DefaultTabExpandStyle",
+          "TabHeight" : 36,
+          "TabLocation" : "center",
+          "TabOffset" : 0,
+          "TabWidth" : 36,
+          "Type" : "container",
+          "Visible" : true,
+          "Z-index" : 10,
+          "__TypeDisplayName" : "Container"
+        },
+        "Widgets" : [ {
+          "Properties" : {
+            "Area" : "UI",
+            "CustomClass" : "border-bottom1",
+            "DisplayName" : "panel-5",
+            "Height" : 200,
+            "HideScrollbars" : false,
+            "HorizontalAnchor" : "left",
+            "Id" : "panel-5",
+            "Left" : 655,
+            "ResponsiveLayout" : true,
+            "ShowDataLoading" : true,
+            "Style" : "DefaultContainerStyle",
+            "Top" : 25,
+            "Type" : "panel",
+            "VerticalAnchor" : "top",
+            "Visible" : true,
+            "Width" : 300,
+            "Z-index" : 10,
+            "__TypeDisplayName" : "Panel"
+          },
+          "Widgets" : [ {
+            "Properties" : {
+              "Alignment" : "left",
+              "AllowEllipsis" : false,
+              "Area" : "UI",
+              "CustomClass" : "label-center",
+              "DisplayName" : "label-6",
+              "Height" : 27,
+              "Id" : "label-6",
+              "Left" : 200,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Style" : {
+                "backgroundColor" : "",
+                "displayString" : "",
+                "fontEmphasisBold" : false,
+                "fontEmphasisItalic" : false,
+                "fontEmphasisUnderline" : false,
+                "foregroundColor" : "#000000",
+                "image" : "",
+                "lineColor" : "",
+                "lineStyle" : "solid",
+                "lineThickness" : 1,
+                "secondaryBackgroundColor" : "",
+                "textSize" : "20px"
+              },
+              "Text" : "Export to file repository",
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 8,
+              "Type" : "label",
+              "Visible" : true,
+              "Width" : 240,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Label",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : true,
+              "DataChangeType" : "VALUE",
+              "DisplayName" : "expression-14",
+              "Expression" : "\"Export to \" + RepoPathName",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-14",
+              "Left" : 0,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 5,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression",
+              "_currentParameterDefs" : [ {
+                "BaseType" : "STRING",
+                "Description" : "",
+                "ParameterName" : "RepoPathName"
+              } ]
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : true,
+              "DataChangeType" : "VALUE",
+              "Description" : "",
+              "DisplayName" : "exp_ModifyExportExtensionsPath",
+              "Expression" : "repositoryPath + \"/Extensions\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-46",
+              "Left" : 755,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 5,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression",
+              "_currentParameterDefs" : [ {
+                "BaseType" : "STRING",
+                "Description" : "",
+                "ParameterName" : "repositoryPath"
+              } ]
+            },
+            "Widgets" : [ ]
+          } ]
+        } ]
+      }, {
+        "Properties" : {
+          "AnimateExpandCollapse" : true,
+          "Area" : "UI",
+          "BGImageRepeat" : "no-repeat",
+          "BGImageSize" : "auto",
+          "DisplayName" : "Row 1",
+          "ExpandCollapseTabLocation" : "outside",
+          "Expanded" : true,
+          "Id" : "container-3",
+          "MinHeight" : 0,
+          "MinWidth" : 0,
+          "Overlay" : false,
+          "OverlayIsTransparent" : false,
+          "ResponsiveLayout" : true,
+          "ShowDataLoading" : true,
+          "ShowExpandCollapseTab" : false,
+          "Style" : "DefaultContainerStyle",
+          "TabCollapseStyle" : "DefaultTabCollapseStyle",
+          "TabExpandStyle" : "DefaultTabExpandStyle",
+          "TabHeight" : 36,
+          "TabLocation" : "center",
+          "TabOffset" : 0,
+          "TabWidth" : 36,
+          "Type" : "container",
+          "Visible" : true,
+          "Z-index" : 10,
+          "__TypeDisplayName" : "Container"
+        },
+        "Widgets" : [ {
+          "Properties" : {
+            "Area" : "UI",
+            "CustomClass" : "border-bottom1 border-top1",
+            "DisplayName" : "panel-11",
+            "Height" : 200,
+            "HideScrollbars" : false,
+            "HorizontalAnchor" : "left",
+            "Id" : "panel-11",
+            "Left" : 150,
+            "ResponsiveLayout" : true,
+            "ShowDataLoading" : true,
+            "Style" : "DefaultContainerStyle",
+            "Top" : 70,
+            "Type" : "panel",
+            "VerticalAnchor" : "top",
+            "Visible" : true,
+            "Width" : 300,
+            "Z-index" : 10,
+            "__TypeDisplayName" : "Panel"
+          },
+          "Widgets" : [ {
+            "Properties" : {
+              "Area" : "UI",
+              "CustomClass" : "checkbox-default",
+              "Disabled" : false,
+              "DisplayName" : "checkbox-15",
+              "FocusStyle" : "DefaultFocusStyle",
+              "Height" : 20,
+              "Id" : "checkbox-15",
+              "Left" : 320,
+              "Prompt" : "Include dependents",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "State" : false,
+              "Style" : "DefaultCheckboxStyle",
+              "TabSequence" : 0,
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 55,
+              "Type" : "checkbox",
+              "Visible" : true,
+              "Width" : 225,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Checkbox",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "CustomClass" : "file-repo-input exp-entities",
+              "DisplayName" : "entitypicker-16",
+              "EntityType" : "Projects",
+              "FocusStyle" : "DefaultFocusStyle",
+              "Height" : 38,
+              "Id" : "entitypicker-16",
+              "IncludeSystemObjects" : false,
+              "Left" : 45,
+              "ResponsiveLayout" : false,
+              "SearchIncludesDescriptions" : true,
+              "SearchTerm" : "",
+              "ShowAdvanced" : true,
+              "ShowDataLoading" : true,
+              "TabSequence" : 1,
+              "Top" : 45,
+              "Type" : "entitypicker",
+              "UseMostRecentlyUsed" : true,
+              "Visible" : true,
+              "Width" : 255,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Entity Picker"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Alignment" : "left",
+              "AllowEllipsis" : false,
+              "Area" : "UI",
+              "CustomClass" : "full-width-label",
+              "DisplayName" : "label-17",
+              "Height" : 27,
+              "Id" : "label-17",
+              "Left" : 45,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Style" : {
+                "backgroundColor" : "",
+                "displayString" : "",
+                "fontEmphasisBold" : false,
+                "fontEmphasisItalic" : false,
+                "fontEmphasisUnderline" : false,
+                "foregroundColor" : "#000000",
+                "image" : "",
+                "lineColor" : "",
+                "lineStyle" : "solid",
+                "lineThickness" : 1,
+                "secondaryBackgroundColor" : "",
+                "textSize" : "xxl"
+              },
+              "Text" : "Export entities",
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 10,
+              "Type" : "label",
+              "Visible" : true,
+              "Width" : 240,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Label",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "ActiveStyle" : "DefaultButtonActiveStyle",
+              "Area" : "UI",
+              "CancelConfirmationButton" : "button2",
+              "ConfirmationButton1Label" : "Yes",
+              "ConfirmationButton2Label" : "No",
+              "ConfirmationPrompt" : "Do Action?",
+              "ConfirmationRequired" : false,
+              "ConfirmationTitle" : "Confirm Action",
+              "ContextId" : "",
+              "CustomClass" : "blue-btn",
+              "DefaultConfirmationButton" : "button1",
+              "Description" : "",
+              "Disabled" : false,
+              "DisabledStyle" : "DefaultButtonDisabledStyle",
+              "DisplayName" : "btn_ExportEntities",
+              "FocusStyle" : "DefaultButtonFocusStyle",
+              "Height" : 38,
+              "HoverStyle" : "DefaultButtonHoverStyle",
+              "IconAlignment" : "left",
+              "Id" : "button-20",
+              "Label" : "Export",
+              "Left" : 600,
+              "ResponsiveLayout" : false,
+              "RoundedCorners" : true,
+              "ShowDataLoading" : true,
+              "Style" : "DefaultButtonStyle",
+              "TabSequence" : 2,
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 45,
+              "Type" : "button",
+              "Visible" : true,
+              "Width" : 120,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Button",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "VALUE",
+              "DisplayName" : "expression-21",
+              "Expression" : "$('.exp-entities input.twInlineSearch-input').attr('tabindex', '1001');",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-21",
+              "Left" : 385,
+              "OutputBaseType" : "NOTHING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 15,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "Description" : "",
+              "DisplayName" : "exp_makeBtnBlue",
+              "Expression" : "\"blue-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-38",
+              "Left" : 580,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 0,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "Description" : "",
+              "DisplayName" : "exp_makeBtnBlueLoading",
+              "Expression" : "\"blue-btn loading-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-39",
+              "Left" : 860,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 20,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "DataType" : "STRING",
+              "DisplayName" : "eventsrouter-40",
+              "Id" : "eventsrouter-40",
+              "Left" : 765,
+              "NumberOfInputs" : 3,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 55,
+              "Type" : "eventsrouter",
+              "Visible" : true,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Events Router"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "Description" : "",
+              "DisplayName" : "exp_makeBtnGreenDone",
+              "Expression" : "\"green-btn done-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-41",
+              "Left" : 860,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 90,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          } ]
+        } ]
+      }, {
+        "Properties" : {
+          "AnimateExpandCollapse" : true,
+          "Area" : "UI",
+          "BGImageRepeat" : "no-repeat",
+          "BGImageSize" : "auto",
+          "DisplayName" : "Row",
+          "ExpandCollapseTabLocation" : "outside",
+          "Expanded" : true,
+          "Id" : "container-13",
+          "MinHeight" : 0,
+          "MinWidth" : 0,
+          "Overlay" : false,
+          "OverlayIsTransparent" : false,
+          "ResponsiveLayout" : true,
+          "ShowDataLoading" : true,
+          "ShowExpandCollapseTab" : false,
+          "Style" : "DefaultContainerStyle",
+          "TabCollapseStyle" : "DefaultTabCollapseStyle",
+          "TabExpandStyle" : "DefaultTabExpandStyle",
+          "TabHeight" : 36,
+          "TabLocation" : "center",
+          "TabOffset" : 0,
+          "TabWidth" : 36,
+          "Type" : "container",
+          "Visible" : true,
+          "Z-index" : 10,
+          "__TypeDisplayName" : "Container"
+        },
+        "Widgets" : [ {
+          "Properties" : {
+            "Area" : "UI",
+            "CustomClass" : "border-bottom1 border-top1",
+            "DisplayName" : "panel-22",
+            "Height" : 200,
+            "HideScrollbars" : false,
+            "HorizontalAnchor" : "left",
+            "Id" : "panel-22",
+            "Left" : 150,
+            "ResponsiveLayout" : true,
+            "ShowDataLoading" : true,
+            "Style" : "DefaultContainerStyle",
+            "Top" : 70,
+            "Type" : "panel",
+            "VerticalAnchor" : "top",
+            "Visible" : true,
+            "Width" : 300,
+            "Z-index" : 10,
+            "__TypeDisplayName" : "Panel"
+          },
+          "Widgets" : [ {
+            "Properties" : {
+              "Area" : "UI",
+              "CustomClass" : "file-repo-input exp-data",
+              "DisplayName" : "entitypicker-24",
+              "EntityType" : "Projects",
+              "FocusStyle" : "DefaultFocusStyle",
+              "Height" : 38,
+              "Id" : "entitypicker-24",
+              "IncludeSystemObjects" : false,
+              "Left" : 45,
+              "ResponsiveLayout" : false,
+              "SearchIncludesDescriptions" : true,
+              "SearchTerm" : "",
+              "ShowAdvanced" : true,
+              "ShowDataLoading" : true,
+              "TabSequence" : 1,
+              "Top" : 45,
+              "Type" : "entitypicker",
+              "UseMostRecentlyUsed" : true,
+              "Visible" : true,
+              "Width" : 255,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Entity Picker"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Alignment" : "left",
+              "AllowEllipsis" : false,
+              "Area" : "UI",
+              "CustomClass" : "full-width-label",
+              "DisplayName" : "label-25",
+              "Height" : 27,
+              "Id" : "label-25",
+              "Left" : 45,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Style" : {
+                "backgroundColor" : "",
+                "displayString" : "",
+                "fontEmphasisBold" : false,
+                "fontEmphasisItalic" : false,
+                "fontEmphasisUnderline" : false,
+                "foregroundColor" : "#000000",
+                "image" : "",
+                "lineColor" : "",
+                "lineStyle" : "solid",
+                "lineThickness" : 1,
+                "secondaryBackgroundColor" : "",
+                "textSize" : "xxl"
+              },
+              "Text" : "Export data",
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 10,
+              "Type" : "label",
+              "Visible" : true,
+              "Width" : 240,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Label",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "ActiveStyle" : "DefaultButtonActiveStyle",
+              "Area" : "UI",
+              "CancelConfirmationButton" : "button2",
+              "ConfirmationButton1Label" : "Yes",
+              "ConfirmationButton2Label" : "No",
+              "ConfirmationPrompt" : "Do Action?",
+              "ConfirmationRequired" : false,
+              "ConfirmationTitle" : "Confirm Action",
+              "ContextId" : "",
+              "CustomClass" : "blue-btn",
+              "DefaultConfirmationButton" : "button1",
+              "Description" : "",
+              "Disabled" : false,
+              "DisabledStyle" : "DefaultButtonDisabledStyle",
+              "DisplayName" : "btn_ExportData",
+              "FocusStyle" : "DefaultButtonFocusStyle",
+              "Height" : 38,
+              "HoverStyle" : "DefaultButtonHoverStyle",
+              "IconAlignment" : "left",
+              "Id" : "button-26",
+              "Label" : "Export",
+              "Left" : 600,
+              "ResponsiveLayout" : false,
+              "RoundedCorners" : true,
+              "ShowDataLoading" : true,
+              "Style" : "DefaultButtonStyle",
+              "TabSequence" : 4,
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 45,
+              "Type" : "button",
+              "Visible" : true,
+              "Width" : 120,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Button",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "VALUE",
+              "DisplayName" : "expression-27",
+              "Expression" : "$('.exp-data input.twInlineSearch-input').attr('tabindex', '1003');",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-27",
+              "Left" : 385,
+              "OutputBaseType" : "NOTHING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 15,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "DisplayName" : "expression-42",
+              "Expression" : "\"blue-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-42",
+              "Left" : 600,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 5,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "DisplayName" : "expression-43",
+              "Expression" : "\"blue-btn loading-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-43",
+              "Left" : 885,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 20,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "DataType" : "STRING",
+              "DisplayName" : "eventsrouter-44",
+              "Id" : "eventsrouter-44",
+              "Left" : 765,
+              "NumberOfInputs" : 3,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 55,
+              "Type" : "eventsrouter",
+              "Visible" : true,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Events Router"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "DisplayName" : "expression-45",
+              "Expression" : "\"green-btn done-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-45",
+              "Left" : 880,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 85,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          } ]
+        } ]
+      }, {
+        "Properties" : {
+          "AnimateExpandCollapse" : true,
+          "Area" : "UI",
+          "BGImageRepeat" : "no-repeat",
+          "BGImageSize" : "auto",
+          "DisplayName" : "Row",
+          "ExpandCollapseTabLocation" : "outside",
+          "Expanded" : true,
+          "Id" : "container-12",
+          "MinHeight" : 0,
+          "MinWidth" : 0,
+          "Overlay" : false,
+          "OverlayIsTransparent" : false,
+          "ResponsiveLayout" : true,
+          "ShowDataLoading" : true,
+          "ShowExpandCollapseTab" : false,
+          "Style" : "DefaultContainerStyle",
+          "TabCollapseStyle" : "DefaultTabCollapseStyle",
+          "TabExpandStyle" : "DefaultTabExpandStyle",
+          "TabHeight" : 36,
+          "TabLocation" : "center",
+          "TabOffset" : 0,
+          "TabWidth" : 36,
+          "Type" : "container",
+          "Visible" : true,
+          "Z-index" : 10,
+          "__TypeDisplayName" : "Container"
+        },
+        "Widgets" : [ {
+          "Properties" : {
+            "Area" : "UI",
+            "CustomClass" : "border-bottom1 border-top1",
+            "DisplayName" : "panel-28",
+            "Height" : 200,
+            "HideScrollbars" : false,
+            "HorizontalAnchor" : "left",
+            "Id" : "panel-28",
+            "Left" : 150,
+            "ResponsiveLayout" : true,
+            "ShowDataLoading" : true,
+            "Style" : "DefaultContainerStyle",
+            "Top" : 70,
+            "Type" : "panel",
+            "VerticalAnchor" : "top",
+            "Visible" : true,
+            "Width" : 300,
+            "Z-index" : 10,
+            "__TypeDisplayName" : "Panel"
+          },
+          "Widgets" : [ {
+            "Properties" : {
+              "Alignment" : "left",
+              "AllowEllipsis" : false,
+              "Area" : "UI",
+              "CustomClass" : "full-width-label",
+              "DisplayName" : "label-30",
+              "Height" : 27,
+              "Id" : "label-30",
+              "Left" : 45,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Style" : {
+                "backgroundColor" : "",
+                "displayString" : "",
+                "fontEmphasisBold" : false,
+                "fontEmphasisItalic" : false,
+                "fontEmphasisUnderline" : false,
+                "foregroundColor" : "#000000",
+                "image" : "",
+                "lineColor" : "",
+                "lineStyle" : "solid",
+                "lineThickness" : 1,
+                "secondaryBackgroundColor" : "",
+                "textSize" : "xxl"
+              },
+              "Text" : "Export extensions to zip files",
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 50,
+              "Type" : "label",
+              "Visible" : true,
+              "Width" : 240,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Label",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "ActiveStyle" : "DefaultButtonActiveStyle",
+              "Area" : "UI",
+              "CancelConfirmationButton" : "button2",
+              "ConfirmationButton1Label" : "Yes",
+              "ConfirmationButton2Label" : "No",
+              "ConfirmationPrompt" : "Do Action?",
+              "ConfirmationRequired" : false,
+              "ConfirmationTitle" : "Confirm Action",
+              "ContextId" : "",
+              "CustomClass" : "blue-btn",
+              "DefaultConfirmationButton" : "button1",
+              "Description" : "",
+              "Disabled" : false,
+              "DisabledStyle" : "DefaultButtonDisabledStyle",
+              "DisplayName" : "btn_ExportExtensionsZIP",
+              "FocusStyle" : "DefaultButtonFocusStyle",
+              "Height" : 38,
+              "HoverStyle" : "DefaultButtonHoverStyle",
+              "IconAlignment" : "left",
+              "Id" : "button-31",
+              "Label" : "Export",
+              "Left" : 600,
+              "ResponsiveLayout" : false,
+              "RoundedCorners" : true,
+              "ShowDataLoading" : true,
+              "Style" : "DefaultButtonStyle",
+              "TabSequence" : 5,
+              "ToolTipField" : "",
+              "ToolTipStyle" : "DefaultTooltipStyle",
+              "Top" : 45,
+              "Type" : "button",
+              "Visible" : true,
+              "Width" : 120,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Button",
+              "__supportsTooltip" : true
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "DisplayName" : "expression-33",
+              "Expression" : "\"blue-btn loading-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-33",
+              "Left" : 845,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 20,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "DataType" : "STRING",
+              "DisplayName" : "eventsrouter-34",
+              "Id" : "eventsrouter-34",
+              "Left" : 750,
+              "NumberOfInputs" : 3,
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 55,
+              "Type" : "eventsrouter",
+              "Visible" : true,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Events Router"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "DisplayName" : "expression-35",
+              "Expression" : "\"green-btn done-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-35",
+              "Left" : 845,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 90,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          }, {
+            "Properties" : {
+              "Area" : "UI",
+              "AutoEvaluate" : false,
+              "DataChangeType" : "ALWAYS",
+              "DisplayName" : "expression-36",
+              "Expression" : "\"blue-btn\"",
+              "FireOnFirstValue" : false,
+              "Height" : 28,
+              "Id" : "expression-36",
+              "Left" : 560,
+              "OutputBaseType" : "STRING",
+              "ResponsiveLayout" : false,
+              "ShowDataLoading" : true,
+              "Top" : 5,
+              "Type" : "expression",
+              "Visible" : true,
+              "Width" : 200,
+              "Z-index" : 10,
+              "__TypeDisplayName" : "Expression"
+            },
+            "Widgets" : [ ]
+          } ]
+        } ]
+      } ]
+    } ]
+  },
+  "mashupType" : "mashup"
+}]]></mashupContent><ConfigurationChanges><ConfigurationChange changeAction="CREATE" changeReason="header : name : updated, projectName : updated&#10;documentation : updated&#10;" timestamp="2018-08-30T14:32:38.233+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T14:43:39.534+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:01:48.800+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:03:06.304+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:05:08.503+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:05:12.093+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:05:55.261+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:06:03.098+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:06:11.473+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:12:51.696+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:13:33.897+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:14:17.515+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:15:18.355+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:16:24.595+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:16:56.408+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:17:12.684+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:17:19.984+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:18:19.672+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:18:44.505+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:19:00.356+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:21:20.812+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:21:36.013+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:22:26.473+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:24:40.663+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:25:12.106+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:25:40.933+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:28:26.958+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:29:05.815+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:29:31.003+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:30:07.696+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:30:14.438+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:36:18.985+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:36:55.201+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:38:00.059+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:38:14.860+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:39:15.158+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:39:50.901+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:43:49.651+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:44:21.087+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:44:44.673+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:45:21.168+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:50:18.243+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:53:01.712+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:53:50.018+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:56:07.377+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:56:18.944+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:56:20.887+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:57:06.623+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:59:02.854+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T15:59:20.573+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:07:18.269+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:10:15.596+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:11:19.724+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:14:21.436+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:14:23.863+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:14:33.623+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:15:07.850+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:15:19.277+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:16:07.210+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:17:31.130+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:18:07.707+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:18:47.418+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:18:59.338+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:19:06.154+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:19:22.570+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:19:55.497+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:20:25.995+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:21:12.667+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:21:59.830+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:22:20.474+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:23:43.338+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:24:10.283+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:26:39.515+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:27:30.483+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:30:10.111+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:31:57.021+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:32:59.973+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:38:33.532+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:39:15.213+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:39:42.618+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:41:11.931+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:44:20.378+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:45:13.503+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:45:44.175+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:46:55.099+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:50:00.163+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:52:19.720+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:52:38.084+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:53:28.050+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T16:55:54.505+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:01:25.039+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:05:47.429+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:06:38.691+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:08:14.390+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:10:50.884+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:24:16.989+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:30:22.516+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-08-30T17:30:56.322+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="Mashup : design : updated&#10;" timestamp="2018-08-31T15:38:03.831+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-03T09:31:29.150+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-03T09:32:18.676+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-05T10:28:05.118+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-05T10:29:20.170+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-05T15:10:37.452+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-06T10:06:34.992+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-06T10:37:54.546+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-06T10:42:12.289+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-06T10:42:34.025+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-06T10:43:39.197+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-07T10:11:42.001+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-07T10:28:40.641+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="" timestamp="2018-09-07T12:41:33.349+03:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="Mashup : design : updated&#10;" timestamp="2018-12-21T17:29:55.560+02:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="Mashup : design : updated&#10;" timestamp="2018-12-27T10:25:30.215+02:00" user="Administrator"/><ConfigurationChange changeAction="MODIFY" changeReason="Mashup : design : updated&#10;" timestamp="2018-12-27T17:43:52.452+02:00" user="Administrator"/></ConfigurationChanges></Mashup></Mashups></Entities>
